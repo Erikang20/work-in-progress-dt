@@ -8,6 +8,7 @@ var express = require( "express" ),
 require( "locus" );
 
 app.set( 'view engine', 'ejs' );
+app.set( 'views', ( __dirname + '/views' ) );
 app.use( express.static( __dirname + '/public' ) );
 app.use( morgan( 'tiny' ) );
 app.use( bodyParser.urlencoded( {
@@ -15,12 +16,18 @@ app.use( bodyParser.urlencoded( {
 } ) );
 app.use( methodOverride( '_method' ) );
 
+
 app.get( '/', function( req, res ) {
 	res.render( 'statics/home' );
 } );
 
+
+
 // Routes
+// var postsRouter = require( './routes/posts' );
+
 app.use( '/users', usersRouter );
+// app.use( '/posts', postsRouter );
 
 
 // app.get("*", function(req,res){
