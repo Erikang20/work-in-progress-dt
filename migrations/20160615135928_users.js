@@ -4,6 +4,8 @@ exports.up = function( knex, Promise ) {
 		table.string( 'full_name' );
 		table.string( 'username' );
 		table.text( 'img_url', 'longtext' );
+		table.timestamp( 'created_at' ).defaultTo( knex.fn.now() );
+
 	} );
 };
 
